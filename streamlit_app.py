@@ -1,26 +1,23 @@
 
 import streamlit as st
-from agent.reasoning_agent import ReasoningAgent
-from agent.intent_extraction_agent import IntentExtractionAgent
-from agent.knowledge_base_loader import KnowledgeBase
+from agent.ingestion_engine import IngestionEngine
+import os
 
-st.set_page_config(page_title="CMC CQA Reasoning Agent (Phase 6)", page_icon="🧠", layout="wide")
-st.title("🤖 CMC CQA Reasoning Agent — Phase 6 (Natural Language AI)")
+st.set_page_config(page_title="CMC Agent Phase 7: Document Ingestion", page_icon="📄", layout="wide")
+st.title("📄 CMC Knowledge Ingestion Engine (Phase 7 MVP)")
 
 kb_path = "output/CQA_KnowledgeBase_Master.csv"
-kb = KnowledgeBase(kb_path)
-agent = ReasoningAgent(kb_path)
-intent_agent = IntentExtractionAgent(kb.get_modalities(), kb.get_phases())
+engine = IngestionEngine(kb_path)
 
-query = st.text_input("Ask anything CMC CQA related:")
+uploaded_file = st.file_uploader("Upload regulatory PDF for ingestion", type=["pdf"])
+modality = st.text_input("Specify Modality for extracted CQAs (ex: mAb, ADC, CAR-T, AAV Gene Therapy):")
+phase = st.text_input("Specify Phase (ex: Phase 1, Phase 2, Phase 3):")
 
-if query:
-    with st.spinner("Thinking..."):
-        modality, phase = intent_agent.extract(query)
-
-        if not modality or not phase:
-            st.warning("❌ Sorry — could not extract both modality and phase. Please try rephrasing your question.")
-        else:
-            full_query = f"{modality} {phase}"
-            response = agent.generate_control_strategy(full_query)
-            st.markdown(response)
+if st.button("Ingest PDF"):
+    if not uploaded_file or not modality or not phase:
+        st.warning("Please upload a file and specify modality and phase.")
+    else:
+        with open("uploaded.pdf", "wb") as f:
+            f.write(uploaded_file.read())
+        count = engine.ingest_pdf("uploaded.pdf", modality, phase)
+        st.success(f"Ingestion complete. {count} new records added to Knowledge Base.")
