@@ -1,6 +1,5 @@
-
 import streamlit as st
-from reasoning_agent import ReasoningAgent
+from agent.reasoning_agent import ReasoningAgent
 
 st.set_page_config(page_title="CMC Reasoning Agent", page_icon="🧬", layout="wide")
 st.title("🤖 CMC Reasoning Agent (Phase 4 - Control Strategy Generator)")
