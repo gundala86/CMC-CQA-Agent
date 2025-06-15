@@ -4,7 +4,7 @@ from agent.reasoning_agent import ReasoningAgent
 from agent.intent_extraction_agent import IntentExtractionAgent
 from agent.knowledge_base_loader import KnowledgeBase
 
-st.set_page_config(page_title="CMC Reasoning Agent (Phase 6)", page_icon="🧠", layout="wide")
+st.set_page_config(page_title="CMC CQA Reasoning Agent (Phase 6)", page_icon="🧠", layout="wide")
 st.title("🤖 CMC Reasoning Agent — Phase 6 (Natural Language AI)")
 
 kb_path = "output/CQA_KnowledgeBase_Master.csv"
