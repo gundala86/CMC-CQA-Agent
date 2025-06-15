@@ -12,7 +12,7 @@ kb = KnowledgeBase(kb_path)
 agent = ReasoningAgent(kb_path)
 intent_agent = IntentExtractionAgent(kb.get_modalities(), kb.get_phases())
 
-query = st.text_input("Ask anything CMC related:")
+query = st.text_input("Ask anything CMC CQA related:")
 
 if query:
     with st.spinner("Thinking..."):
