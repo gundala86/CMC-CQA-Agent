@@ -1,6 +1,6 @@
 
 import pandas as pd
-from knowledge_base_loader import KnowledgeBase
+from agent.knowledge_base_loader import KnowledgeBase
 
 class ReasoningAgent:
     def __init__(self, kb_path):

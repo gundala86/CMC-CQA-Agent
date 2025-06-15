@@ -1,6 +1,6 @@
 
-from semantic_search_engine import SemanticSearchEngine
-from knowledge_base_loader import KnowledgeBase
+from agent.semantic_search_engine import SemanticSearchEngine
+from agent.knowledge_base_loader import KnowledgeBase
 
 class HybridRetriever:
     def __init__(self, kb_path):

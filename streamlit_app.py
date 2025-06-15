@@ -1,8 +1,9 @@
+
 import streamlit as st
 from agent.reasoning_agent import ReasoningAgent
 
 st.set_page_config(page_title="CMC Reasoning Agent", page_icon="🧬", layout="wide")
-st.title("🤖 CMC Reasoning Agent (Phase 4 - Control Strategy Generator)")
+st.title("🤖 CMC Reasoning Agent (SaaS Deployment)")
 
 kb_path = "output/CQA_KnowledgeBase_Master.csv"
 agent = ReasoningAgent(kb_path)

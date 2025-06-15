@@ -1,6 +1,6 @@
 
-from knowledge_base_loader import KnowledgeBase
-from embedding_model_loader import EmbeddingModel
+from agent.knowledge_base_loader import KnowledgeBase
+from agent.embedding_model_loader import EmbeddingModel
 import pandas as pd
 import torch
 
